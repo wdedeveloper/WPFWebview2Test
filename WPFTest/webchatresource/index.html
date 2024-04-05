@@ -1,0 +1,77 @@
+<html>
+<script>
+
+window.chrome.webview.addEventListener('message', event => postJSONHandler(event.data));
+
+//window.chrome.webview.addEventListener('focus', focusHandler());
+//window.chrome.webview.addEventListener('blur', blurHandler());
+
+function postJSONHandler(data) {
+	//alert(data);
+	console.log(data);
+	
+	if(typeof data !== "undefined") {
+		if(typeof data.action !== "undefined") {
+			console.log("action is set " + data.action);
+			if(data.action === "FOCUS")
+				loadFunction();
+			//else
+			//	blurFunction();
+			
+		}
+	}
+}
+
+function focusHandler() {
+	console.log("focus");
+	//loadFunction();
+}
+
+function blurHandler() {
+	console.log("blur");
+	//blurFunction();
+}
+
+
+function postJSON2dotNet() {
+
+  var msg = "[{'data1':'value1','data2':'value2'},{'data1':'value1','data2':'value2'}]";
+
+  window.chrome.webview.postMessage(msg);
+}
+
+function callback2() {
+  window.chrome.webview.postMessage('callback2');
+}
+
+function callback3() {
+  window.chrome.webview.postMessage('callback3');
+}
+
+function focusElementJs() {
+	console.log("Focused");
+}
+
+function blurElementJs() {
+	console.log("Blured");
+}
+
+function loadFunction() {
+	document.getElementById("inpTest").focus()
+}
+
+function blurFunction() {
+	document.getElementById("inpTest").blur()
+}
+
+</script>
+<body onload="loadFunction()">
+<p>Toto raz bude chat stranka</p>
+<div>
+<button onclick="postJSON2dotNet()">CallBack 1</button>
+<button onclick="callback2()" >CallBack 2</button>
+<button onclick="callback3()" >CallBack 3</button>
+<input id="inpTest" onFocus="focusElementJs()" onBlur="blurElementJs()" spellcheck="true"></input>
+</div>
+</body>
+</html>
