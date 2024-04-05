@@ -58,6 +58,6 @@ Stretch="Fill" />
             
 
         </Button>
-        <wv2:WebView2CompositionControl Margin="0,40,0,0" Name="webView" Focusable="True" SizeChanged="webView_SizeChanged" ManipulationStarted="webView_ManipulationStarted" ManipulationCompleted="webView_ManipulationCompleted" GotFocus="webView_GotFocus" GotKeyboardFocus="webView_GotKeyboardFocus" LostKeyboardFocus="webView_LostKeyboardFocus" LostFocus="webView_LostFocus"/>
+        <wv2:WebView2 Margin="0,40,0,0" Name="webView" Focusable="True" SizeChanged="webView_SizeChanged" ManipulationStarted="webView_ManipulationStarted" ManipulationCompleted="webView_ManipulationCompleted" GotFocus="webView_GotFocus" GotKeyboardFocus="webView_GotKeyboardFocus" LostKeyboardFocus="webView_LostKeyboardFocus" LostFocus="webView_LostFocus"/>
     </Grid>
 </UserControl>

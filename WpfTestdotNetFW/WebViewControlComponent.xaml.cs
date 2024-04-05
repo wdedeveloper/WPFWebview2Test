@@ -69,9 +69,17 @@ namespace WpfTestdotNetFW
             await webView2.EnsureCoreWebView2Async(env);
 
             //webView.CoreWebView2.WebMessageReceived += WebView_WebMessageReceived;
-            //webView.CoreWebView2.NavigationCompleted += CoreWebView2_NavigationCompleted;
-            webView2.CoreWebView2.Navigate("c:\\ProjectsDev\\VisualStudio\\Test\\WPFTest\\WPFTest\\webchatresource\\index.html");
+            //webView2.CoreWebView2.NavigationCompleted += CoreWebView2_NavigationCompleted;
+            webView2.CoreWebView2.Navigate("c:\\ProjectsDev\\VisualStudio\\Test\\WPFTest\\WPFTest\\webchatresource\\index1.html");
             Console.Out.WriteLine("InitializeAsync2 done");
+        }
+
+        private void CoreWebView2_NavigationCompleted(object sender, CoreWebView2NavigationCompletedEventArgs e)
+        {
+            //webView2.Focus();
+            //Keyboard.Focus(webView2);
+            //DependencyObject focusScope = FocusManager.GetFocusScope(webView2);
+            //FocusManager.SetFocusedElement(focusScope, webView2);
         }
 
         private void webView2_Loaded(object sender, RoutedEventArgs e)
@@ -89,13 +97,69 @@ namespace WpfTestdotNetFW
             if (webView.Visibility == Visibility.Visible)
             {
                 webView.Visibility = Visibility.Collapsed;
-                rowView.Height = new GridLength(webView.MinHeight, GridUnitType.Pixel);
+                rowView1.Height = new GridLength(webView.MinHeight, GridUnitType.Pixel);
             }
             else
             {
                 webView.Visibility = Visibility.Visible;
-                rowView.Height = new GridLength(100, GridUnitType.Pixel);
+                rowView1.Height = new GridLength(100, GridUnitType.Pixel);
             }
+
+            this.Focus();
+            
+            //DependencyObject focusScope = FocusManager.GetFocusScope(webView2);
+            //FocusManager.SetFocusedElement(this, webView2);
+
+            //
+            webView2.Focus();
+            Keyboard.Focus(webView2);
+        }
+
+        private void btnBlur_Click(object sender, RoutedEventArgs e)
+        {
+            Keyboard.ClearFocus();
+            //TraversalRequest r = new TraversalRequest(FocusNavigationDirection.Next);
+            //webView2.MoveFocus(r);
+        }
+
+        private void webView_GotFocus(object sender, RoutedEventArgs e)
+        {
+            Console.Out.WriteLine("webView_GotFocus done");
+        }
+
+        private void webView_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            Console.Out.WriteLine("webView_GotKeyboardFocus done");
+        }
+
+        private void webView_LostFocus(object sender, RoutedEventArgs e)
+        {
+            Console.Out.WriteLine("webView_LostFocus done");
+        }
+
+        private void webView_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            Console.Out.WriteLine("webView_LostKeyboardFocus done");
+        }
+
+        private void webView2_GotFocus(object sender, RoutedEventArgs e)
+        {
+            Console.Out.WriteLine("webView2_GotFocus done");
+        }
+
+        private void webView2_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            Console.Out.WriteLine("webView2_GotKeyboardFocus done");
+        }
+
+        private void webView2_LostFocus(object sender, RoutedEventArgs e)
+        {
+            Console.Out.WriteLine("webView2_LostFocus done");
+        }
+
+        private void webView2_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            Console.Out.WriteLine("webView2_LostKeyboardFocus done");
         }
     }
 }

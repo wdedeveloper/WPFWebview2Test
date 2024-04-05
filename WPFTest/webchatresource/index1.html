@@ -6,6 +6,10 @@ window.chrome.webview.addEventListener('message', event => postJSONHandler(event
 window.chrome.webview.addEventListener('focus', focusHandler());
 window.chrome.webview.addEventListener('blur', blurHandler());
 
+window.chrome.webview.addEventListener('focusin', focusInHandler());
+window.chrome.webview.addEventListener('focusout', focusOutHandler());
+
+
 function postJSONHandler(data) {
 	//alert(data);
 	console.log(data);
@@ -22,13 +26,22 @@ function postJSONHandler(data) {
 	}
 }
 
+function focusInHandler() {
+	console.log("focus in index1");
+	//loadFunction();
+}
+function focusOutHandler() {
+	console.log("focus out index1");
+	//loadFunction();
+}
+
 function focusHandler() {
-	console.log("focus index");
+	console.log("focus index1");
 	//loadFunction();
 }
 
 function blurHandler() {
-	console.log("blur index");
+	console.log("blur index1");
 	//blurFunction();
 }
 
@@ -49,19 +62,19 @@ function callback3() {
 }
 
 function focusElementJs() {
-	console.log("Focused index");
+	console.log("Focused index1");
 }
 
 function focusElementBody() {
-	console.log("Focused Body index");
+	console.log("Focused Body index1");
 }
 
 function blurElementJs() {
-	console.log("Blured index");
+	console.log("Blured index1");
 }
 
 function blurElementBody() {
-	console.log("Blured Body index");
+	console.log("Blured Body index1");
 }
 
 function loadFunction() {
